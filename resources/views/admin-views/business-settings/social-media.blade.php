@@ -35,7 +35,6 @@
                                             <option value="linkedin">{{\App\CPU\translate('LinkedIn')}}</option>
                                             <option value="pinterest">{{\App\CPU\translate('Pinterest')}}</option>
                                             <option value="google-plus">{{\App\CPU\translate('Google plus')}}</option>
-                                            <option value="tiktok">{{\App\CPU\translate('Tiktok')  }}</option>
                                         </select>
                                     </div>
                                     <div class="col-md-12 mt-2">

@@ -119,10 +119,10 @@
                                     <select style="width: 100%"
                                            class="js-example-responsive form-control"
                                            name="environment">
-
+                                       
                                         <option value="sandbox" {{$config['environment']=='sandbox'?'selected':''}}>{{\App\CPU\translate('sandbox')}}</option>
                                         <option value="live" {{$config['environment']=='live'?'selected':''}}>{{\App\CPU\translate('live')}}</option>
-
+                                       
                                    </select>
                                 </div>
 
@@ -180,10 +180,10 @@
                                     <select style="width: 100%"
                                            class="js-example-responsive form-control"
                                            name="environment">
-
+                                       
                                         <option value="sandbox" {{isset($config['environment'])==true?$config['environment']=='sandbox'?'selected':'':''}}>{{\App\CPU\translate('sandbox')}}</option>
                                         <option value="live" {{isset($config['environment'])==true?$config['environment']=='live'?'selected':'':''}}>{{\App\CPU\translate('live')}}</option>
-
+                                       
                                    </select>
                                 </div>
 
@@ -779,10 +779,10 @@
                                     <select style="width: 100%"
                                            class="js-example-responsive form-control"
                                            name="environment">
-
+                                       
                                         <option value="sandbox" {{isset($config['environment'])==true?$config['environment']=='sandbox'?'selected':'':''}}>{{\App\CPU\translate('sandbox')}}</option>
                                         <option value="live" {{isset($config['environment'])==true?$config['environment']=='live'?'selected':'':''}}>{{\App\CPU\translate('live')}}</option>
-
+                                       
                                    </select>
                                 </div>
                                 <div class="form-group mb-2">
@@ -847,10 +847,10 @@
                                     <select style="width: 100%"
                                            class="js-example-responsive form-control"
                                            name="environment">
-
+                                       
                                         <option value="sandbox" {{isset($config['environment'])==true?$config['environment']=='sandbox'?'selected':'':''}}>{{\App\CPU\translate('sandbox')}}</option>
                                         <option value="live" {{isset($config['environment'])==true?$config['environment']=='live'?'selected':'':''}}>{{\App\CPU\translate('live')}}</option>
-
+                                       
                                    </select>
                                 </div>
 
@@ -891,10 +891,7 @@
                     </div>
                 </div>
             </div>
-            {{-- bank mandiri --}}
-            {{-- <div class="col-md-6 pt-4">
 
-            </div> --}}
         </div>
     </div>
 @endsection
