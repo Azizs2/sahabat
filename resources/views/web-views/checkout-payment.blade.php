@@ -367,7 +367,57 @@
                                 </div>
                             </div>
                         @endif
+
+                        {{-- Xendit --}}
+                        @php($config=\App\CPU\Helpers::get_business_settings('xendit'))
+                        @if(isset($config) && $config['status'])
+                            <div class="col-md-6 mb-4" style="cursor: pointer">
+                                <div class="card">
+                                    <div class="card-body" style="height: 100px">
+                                        <a class="btn btn-block click-if-alone" href="{{route('xendit-payment')}}">
+                                            <img style="max-width: 150px; margin-top: 0px"
+                                                 src="{{asset('public/assets/front-end/img/xendit.png')}}"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        {{-- @php($config=\App\CPU\Helpers::get_business_settings('bkash'))
+                        @if(isset($config)  && $config['status'])
+                            <div class="col-md-6 mb-4" style="cursor: pointer">
+                                <div class="card">
+                                    <div class="card-body" style="height: 100px">
+                                        <button class="btn btn-block click-if-alone" id="bKash_button"
+                                                onclick="BkashPayment()">
+                                            <img width="100" src="{{asset('public/assets/front-end/img/bkash.png')}}"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif --}}
+
+                        {{-- Midtrans --}}
+                        @php($config=\App\CPU\Helpers::get_business_settings('midtrans'))
+                        @if(isset($config) && $config['status'])
+                            <div class="col-md-6 mb-4" style="cursor: pointer">
+                                <div class="card">
+                                    <div class="card-body" style="height: 100px">
+                                        <a class="btn btn-block click-if-alone" href="{{route('midtrans-payment')}}">
+                                            <img style="max-width: 150px; margin-top: 0px"
+                                                 src="{{asset('public/assets/front-end/img/midtrans.png')}}"/>
+                                        </a>
+                                        <button class="btn btn-block click-if-alone" id="pay-button"
+                                                onclick="MidtransPayment()">
+                                            <img width="100" src="{{asset('public/assets/front-end/img/midtrans.png')}}"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        {{-- @include('web-views.midtrans.midtrans-payment') --}}
                     </div>
+                    
                     <!-- Navigation (desktop)-->
                     <div class="row">
                         <div class="col-4"></div>

@@ -355,6 +355,25 @@ class PaymentMethodController extends Controller
                 ]),
                 'updated_at' => now()
             ]);
+        } elseif ($name == 'xendit') {
+            DB::table('business_settings')->updateOrInsert(['type' => 'xendit'], [
+                'value' => json_encode([
+                    'status' => $request['status'],
+                    'SECRET_API_KEY'=>$request['SECRET_API_KEY'],
+                    'API_KEY'=>$request['API_KEY'],
+                    'API_GATEWAY_URL'=>$request['API_GATEWAY_URL'],
+                ]),
+                'updated_at' => now()
+            ]);
+        } elseif ($name == 'midtrans') {
+            DB::table('business_settings')->updateOrInsert(['type' => 'midtrans'], [
+                'value' => json_encode([
+                    'status' => $request['status'],
+                    'Client_Key'=>$request['Client_Key'],
+                    'Server_Key'=>$request['Server_Key'],
+                ]),
+                'updated_at' => now()
+            ]);
         }
 
         return back();

@@ -28,6 +28,7 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "madnest/madzipper": "^1.1",
         "mercadopago/dx-php": "^2.4",
+        "midtrans/midtrans-php": "^2.5",
         "mpdf/mpdf": "^8.0",
         "nexmo/laravel": "^2.4",
         "paypal/rest-api-sdk-php": "^1.14",
@@ -36,7 +37,8 @@
         "stripe/stripe-php": "^7.107",
         "symfony/translation": "^5.4",
         "twilio/sdk": "^6.31",
-        "unicodeveloper/laravel-paystack": "^1.0"
+        "unicodeveloper/laravel-paystack": "^1.0",
+        "xendit/xendit-php": "^2.19"
     },
     "require-dev": {
         "amirami/localizator": "^0.7.1@alpha",

@@ -211,6 +211,7 @@
                 </div>
             </div>
 
+            {{-- stripe --}}
             <div class="col-md-6 mt-4">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
@@ -257,6 +258,7 @@
                 </div>
             </div>
 
+            {{-- razor_pay --}}
             <div class="col-md-6 mt-4">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
@@ -302,6 +304,7 @@
                 </div>
             </div>
 
+            {{-- senang_pay --}}
             <div class="col-md-6 mt-4">
                 <div class="card">
                     <div class="card-body" style="padding: 20px;height:500px;">
@@ -360,6 +363,7 @@
                 </div>
             </div>
 
+            {{-- paytabs --}}
             <div class="col-md-6 mt-4" style="display: block;">
                 <div class="card">
                     <div class="card-body" style="padding: 20px;height:500px;">
@@ -418,6 +422,7 @@
                 </div>
             </div>
 
+            {{-- paystack --}}
             <div class="col-md-6" style="margin-top: 26px!important;">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
@@ -485,6 +490,7 @@
                 </div>
             </div>
 
+            {{-- paymob_accept --}}
             <div class="col-md-6 mt-4" style="display: block">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
@@ -556,6 +562,7 @@
                 </div>
             </div>
 
+            {{-- fawry_pay --}}
             <div class="col-md-6 mt-4" style="display: none">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
@@ -653,6 +660,7 @@
                 </div>
             </div>
 
+            {{-- liqpay --}}
             <div class="col-md-6 pt-4">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
@@ -750,6 +758,7 @@
                 </div>
             </div>
 
+            {{-- paytm --}}
             <div class="col-md-6 mt-4">
                 <div class="card">
                     <div class="card-body" style="padding: 20px;height:550px;">
@@ -815,7 +824,8 @@
                     </div>
                 </div>
             </div>
-
+            
+            {{-- bkash --}}
             <div class="col-md-6 mt-4" style="display: block">
                 <div class="card">
                     <div class="card-body" style="padding: 20px">
@@ -891,6 +901,106 @@
                     </div>
                 </div>
             </div>
+
+             <!-- Xendit -->
+            <div class="col-md-6 pt-4">
+                <div class="card">
+                    <div class="card-body" style="padding: 20px;height:550px;">
+                        <h5 class="text-center">{{\App\CPU\translate('xendit')}}</h5>
+                        @php($config=\App\CPU\Helpers::get_business_settings('xendit'))
+                        <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.payment-method.update',['xendit']):'javascript:'}}"
+                              method="post">
+                            @csrf
+                            @if(isset($config))
+                                <div class="form-group mb-2">
+                                    <label class="control-label">{{\App\CPU\translate('xendit')}}</label>
+                                </div>
+                                <div class="form-group mb-2 mt-2">
+                                    <input type="radio" name="status" value="1" {{$config['status']==1?'checked':''}}>
+                                    <label style="padding-left: 10px">{{\App\CPU\translate('active')}}</label>
+                                    <br>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input type="radio" name="status" value="0" {{$config['status']==0?'checked':''}}>
+                                    <label style="padding-left: 10px">{{\App\CPU\translate('inactive')}} </label>
+                                    <br>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label class="text-capitalize"
+                                        style="padding-left: 10px">{{\App\CPU\translate('SECRET_API_KEY')}}</label><br>
+                                    <input type="text" class="form-control" name="SECRET_API_KEY"
+                                           value="{{env('APP_MODE')!='demo'?$config['SECRET_API_KEY']:''}}">
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label class="text-capitalize"
+                                        style="padding-left: 10px">{{\App\CPU\translate('API_KEY')}} {{\App\CPU\translate('key')}}</label><br>
+                                    <input type="text" class="form-control" name="API_KEY"
+                                           value="{{env('APP_MODE')!='demo'?$config['API_KEY']:''}}">
+                                </div>
+                                {{-- <div class="form-group mb-2">
+                                    <label class="text-capitalize"
+                                        style="padding-left: 10px">{{\App\CPU\translate('API_GATEWAY_URL')}}</label><br>
+                                    <input type="text" class="form-control" name="API_GATEWAY_URL"
+                                           value="{{env('APP_MODE')!='demo'?$config['API_GATEWAY_URL']:''}}">
+                                </div> --}}
+
+                                <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('save')}}</button>
+                            @else
+                                <button type="submit"
+                                        class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('configure')}}</button>
+                            @endif
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Midtrans -->
+            <div class="col-md-6 pt-4">
+                <div class="card">
+                    <div class="card-body" style="padding: 20px;height:550px;">
+                        <h5 class="text-center">{{\App\CPU\translate('midtrans')}}</h5>
+                        @php($config=\App\CPU\Helpers::get_business_settings('midtrans'))
+                        <form action="{{env('APP_MODE')!='demo'?route('admin.business-settings.payment-method.update',['midtrans']):'javascript:'}}"
+                              method="post">
+                            @csrf
+                            @if(isset($config))
+                                <div class="form-group mb-2">
+                                    <label class="control-label">{{\App\CPU\translate('midtrans')}}</label>
+                                </div>
+                                <div class="form-group mb-2 mt-2">
+                                    <input type="radio" name="status" value="1" {{$config['status']==1?'checked':''}}>
+                                    <label style="padding-left: 10px">{{\App\CPU\translate('active')}}</label>
+                                    <br>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <input type="radio" name="status" value="0" {{$config['status']==0?'checked':''}}>
+                                    <label style="padding-left: 10px">{{\App\CPU\translate('inactive')}} </label>
+                                    <br>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label class="text-capitalize"
+                                        style="padding-left: 10px">{{\App\CPU\translate('Client_Key')}}</label><br>
+                                    <input type="text" class="form-control" name="Client_Key"
+                                           value="{{env('APP_MODE')!='demo'?$config['Client_Key']:''}}">
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label class="text-capitalize"
+                                        style="padding-left: 10px">{{\App\CPU\translate('Server_Key')}} {{\App\CPU\translate('key')}}</label><br>
+                                    <input type="text" class="form-control" name="Server_Key"
+                                           value="{{env('APP_MODE')!='demo'?$config['Server_Key']:''}}">
+                                </div>
+
+                                <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('save')}}</button>
+                            @else
+                                <button type="submit"
+                                        class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('configure')}}</button>
+                            @endif
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
 
         </div>
     </div>
