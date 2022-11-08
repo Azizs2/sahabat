@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Cart;
+use App\Model\CartShipping;
 use App\CPU\CartManager;
 use App\CPU\Helpers;
 use App\CPU\OrderManager;
@@ -27,6 +29,12 @@ class MidtransPaymentController extends Controller
         $discount = session()->has('coupon_discount') ? session('coupon_discount') : 0;
         $order_amount = CartManager::cart_grand_total() - $discount;
         $user_data = Helpers::get_customer();
+        $shippingMethod = Helpers::get_business_settings('shipping_method');
+        $cart_group_ids = CartManager::get_cart_group_ids();
+        // return count($ cart_group_ids);
+        $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
+        // dd($carts);
+
         $config = Helpers::get_business_settings('midtrans');
         $client_Key = $config['Client_Key'];
         $serverKey = $config['Server_Key'];
@@ -43,7 +51,8 @@ class MidtransPaymentController extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => $order_id,
-                'gross_amount' =>$order_amount,
+                'gross_amount' =>round($order_amount),
+                // 'description' => 'Transaction ID: ' . $tran,
             ),
             // 'item_details' => array(
             //     [
@@ -51,8 +60,7 @@ class MidtransPaymentController extends Controller
             //         'price' => '10000',
             //         'quantity' => 1,
             //         'name' => 'Apel'
-            //     ],
-            //     [
+            //     ],[
             //         'id' => 'b1',
             //         'price' => '8000',
             //         'quantity' => 1,
@@ -65,21 +73,11 @@ class MidtransPaymentController extends Controller
             //     'email' => $request->get('email'),
             //     'phone' => $request->get('number'),
             // ),
-            // 'shipping_address' => array(
-            //     'first_name' => 'Budi',
-            //     'last_name'=> 'Susanto',
-            //     'email' => 'budisusanto@example.com',
-            //     'phone' => '0812345678910',
-            //     'address'=> 'Sudirman',
-            //     'city'=> 'Jakarta',
-            //     'postal_code' => '12190',
-            //     'country_code'=>'IDN'
-            // )
         );
-
+        
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         // dd($snapToken);
-        return view('web-views.midtrans.midtrans-payment',['snap_token'=>$snapToken]);
+        return view('web-views.checkout-payment',['snap_token'=>$snapToken]);
     }
 
     public function callback(Request $request){

@@ -937,12 +937,12 @@
                                     <input type="text" class="form-control" name="API_KEY"
                                            value="{{env('APP_MODE')!='demo'?$config['API_KEY']:''}}">
                                 </div>
-                                {{-- <div class="form-group mb-2">
+                                <div class="form-group mb-2">
                                     <label class="text-capitalize"
                                         style="padding-left: 10px">{{\App\CPU\translate('API_GATEWAY_URL')}}</label><br>
                                     <input type="text" class="form-control" name="API_GATEWAY_URL"
                                            value="{{env('APP_MODE')!='demo'?$config['API_GATEWAY_URL']:''}}">
-                                </div> --}}
+                                </div>
 
                                 <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('save')}}</button>
                             @else
@@ -989,6 +989,7 @@
                                     <input type="text" class="form-control" name="Server_Key"
                                            value="{{env('APP_MODE')!='demo'?$config['Server_Key']:''}}">
                                 </div>
+                                
 
                                 <button type="{{env('APP_MODE')!='demo'?'submit':'button'}}" onclick="{{env('APP_MODE')!='demo'?'':'call_demo()'}}" class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('save')}}</button>
                             @else

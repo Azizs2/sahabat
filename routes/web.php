@@ -247,10 +247,12 @@ Route::any('liqpay-callback', 'LiqPayController@callback')->name('liqpay-callbac
 
 // The callback url after a payment XENDIT
 Route::get('xendit-payment', 'XenditController@payment')->name('xendit-payment');
+Route::any('xendit-callback', 'XenditController@callback')->name('xendit-callback');
 
 // The callback url after a payment Midtrans
+Route::get('midtrans-index', 'MidtransPaymentController@index')->name('midtrans-index');
 Route::get('midtrans-payment', 'MidtransPaymentController@payment')->name('midtrans-payment');
-Route::post('midtrans-payment', 'MidtransPaymentController@callback')->name('mitrans-callback');
+Route::post('midtrans-callback', 'MidtransPaymentController@callback')->name('mitrans-callback');
 
 Route::get('/test', function (){
     return view('welcome');

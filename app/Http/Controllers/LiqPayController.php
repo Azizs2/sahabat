@@ -307,6 +307,7 @@ class LiqPayController extends Controller
         $request['order_id'] = session('order_id');
         if ($request['status'] == 'success') {
             $unique_id = OrderManager::gen_unique_id();
+            dd($unique_id);
             $order_ids = [];
             foreach (CartManager::get_cart_group_ids() as $group_id) {
                 $data = [

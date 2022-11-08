@@ -1948,4 +1948,11 @@
   'days_free_delivery' => 'Days free delivery',
   'access_denied!!' => 'Access denied!!',
   'shipping_input_by_customer' => 'Shipping input by customer',
+  'xendit' => 'Xendit',
+  'SECRET_API_KEY' => 'SECRET API KEY',
+  'API_KEY' => 'API KEY',
+  'API_GATEWAY_URL' => 'API GATEWAY URL',
+  'midtrans' => 'Midtrans',
+  'Client_Key' => 'Client Key',
+  'Server_Key' => 'Server Key',
 );

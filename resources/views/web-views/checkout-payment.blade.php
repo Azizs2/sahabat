@@ -17,6 +17,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
     <script src="https://js.stripe.com/v3/"></script>
     {{--stripe--}}
+    
 @endpush
 
 @section('content')
@@ -383,32 +384,17 @@
                             </div>
                         @endif
 
-                        {{-- @php($config=\App\CPU\Helpers::get_business_settings('bkash'))
-                        @if(isset($config)  && $config['status'])
-                            <div class="col-md-6 mb-4" style="cursor: pointer">
-                                <div class="card">
-                                    <div class="card-body" style="height: 100px">
-                                        <button class="btn btn-block click-if-alone" id="bKash_button"
-                                                onclick="BkashPayment()">
-                                            <img width="100" src="{{asset('public/assets/front-end/img/bkash.png')}}"/>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif --}}
-
                         {{-- Midtrans --}}
                         @php($config=\App\CPU\Helpers::get_business_settings('midtrans'))
                         @if(isset($config) && $config['status'])
                             <div class="col-md-6 mb-4" style="cursor: pointer">
                                 <div class="card">
                                     <div class="card-body" style="height: 100px">
-                                        <a class="btn btn-block click-if-alone" href="{{route('midtrans-payment')}}">
+                                        {{-- <a class="btn btn-block click-if-alone" href="{{route('midtrans-payment')}}">
                                             <img style="max-width: 150px; margin-top: 0px"
                                                  src="{{asset('public/assets/front-end/img/midtrans.png')}}"/>
-                                        </a>
-                                        <button class="btn btn-block click-if-alone" id="pay-button"
-                                                onclick="MidtransPayment()">
+                                        </a> --}}
+                                        <button class="btn btn-block click-if-alone" id="pay-button" href="{{route('midtrans-payment')}}" >
                                             <img width="100" src="{{asset('public/assets/front-end/img/midtrans.png')}}"/>
                                         </button>
                                     </div>
@@ -456,6 +442,8 @@
     </script>
 
     <script type="text/javascript">
+
+
         function BkashPayment() {
             $.ajaxSetup({
                 headers: {
